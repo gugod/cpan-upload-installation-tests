@@ -4,7 +4,7 @@ curl --silent https://www.cpan.org/modules/01modules.mtime.rss > /tmp/01modules.
 rc=$?
 if [[ $rc -ne 0 ]]; then exit 1; fi
 
-for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head)
+for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -10)
 do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
