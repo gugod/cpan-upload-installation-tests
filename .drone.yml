@@ -2,4 +2,4 @@ pipeline:
   perl5_28_0:
     image: perl:5.28.0
     commands:
-      - bash cpanm-install-recent-10.sh
+      - bash cpanm-install-recent.sh
