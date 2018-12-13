@@ -11,7 +11,7 @@ do
 
     echo '#' $distname
 
-    cpanm -L $dist_locallib $disturl 2>&1 > $dist_locallib.log
+    cpanm -L $dist_locallib $disturl 2>&1 | sed 's/^/    /'
     rc=$?
 
     if [[ $rc -eq 0 ]]
