@@ -8,6 +8,9 @@ for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org
 do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
+
+    echo '#' $distname
+
     cpanm -L $dist_locallib $disturl 2>&1 > $dist_locallib.log
     rc=$?
 
