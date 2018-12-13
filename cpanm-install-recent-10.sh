@@ -11,7 +11,7 @@ do
 
     echo '#' $distname
 
-    cpanm -L $dist_locallib $disturl 2>&1 | sed 's/^/    /'
+    cpanm -L $dist_locallib $disturl 2>&1 > $dist_locallib.log
     rc=$?
 
     if [[ $rc -eq 0 ]]
@@ -19,5 +19,8 @@ do
         echo 'ok -' $disturl
     else
         echo 'not ok -' $disturl
+        echo '#' __LOG_BEGIN__
+        echo $dist_locallib.log
+        echo '#' __LOG_END__
     fi
 done
