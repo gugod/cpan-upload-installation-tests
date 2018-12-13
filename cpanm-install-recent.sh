@@ -14,9 +14,9 @@ do
 
     if [[ $rc -eq 0 ]]
     then
-        echo 'ok -' $disturl
+        echo ok # cpanm $disturl
     else
-        echo 'not ok -' $disturl
+        echo not ok # cpanm $disturl
         echo '#' __LOG_BEGIN__
         cat $dist_locallib.log
         echo '#' __LOG_END__
