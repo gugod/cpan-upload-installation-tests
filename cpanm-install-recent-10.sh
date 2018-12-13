@@ -20,7 +20,7 @@ do
     else
         echo 'not ok -' $disturl
         echo '#' __LOG_BEGIN__
-        echo $dist_locallib.log
+        cat $dist_locallib.log
         echo '#' __LOG_END__
     fi
 done
