@@ -14,7 +14,7 @@ do
     if [[ $rc -eq 0 ]]
     then
         echo 'ok -' $disturl
-    elif
+    else
         echo 'not ok -' $disturl
     fi
 done
