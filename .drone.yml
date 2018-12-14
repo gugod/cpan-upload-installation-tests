@@ -1,5 +1,23 @@
 kind: pipeline
 name: cpanm
+
+steps:
+  - name: cpanm with test
+    image: perl:5.28.0
+    commands:
+      - bash cpanm-install-recent.sh
+  - name: cpanm notest
+    image: perl:5.28.0
+    commands:
+      - bash cpanm-install-notest-recent.sh
+---
+kind: pipeline
+name: cpanm
+
+platform:
+  os: linux
+  arch: arm64
+
 steps:
   - name: cpanm with test
     image: perl:5.28.0
