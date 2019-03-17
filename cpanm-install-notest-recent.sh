@@ -16,12 +16,15 @@ do
     if [[ $rc -eq 0 ]]
     then
         echo ok '#' cpanm $disturl
+        curl https://gugod.org/feed/cpan-install-notest-recent-SUCCESS/items -X POST -d '{"id":"'$disturl'", "title":"'$distname'"}'
     else
         fail=1
         echo not ok '#' cpanm $disturl
         echo '#' __LOG_BEGIN__
         cat $dist_locallib.log
         echo '#' __LOG_END__
+
+        curl https://gugod.org/feed/cpan-install-notest-recent-FAIL/items -X POST -d '{"id":"'$disturl'", "title":"'$distname'"}'
     fi
 done
 
