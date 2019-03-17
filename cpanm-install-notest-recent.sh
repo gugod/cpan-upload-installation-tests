@@ -25,7 +25,7 @@ do
         cat $dist_locallib.log
         echo '#' __LOG_END__
 
-        curl --silent https://gugod.org/feed/cpan-install-notest-recent-FAIL/items -X POST -F id="$disturl" -F title="$distname" content_text='<'${dist_locallib}.log
+        curl --silent https://gugod.org/feed/cpan-install-notest-recent-FAIL/items -X POST -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     fi
 done
 
