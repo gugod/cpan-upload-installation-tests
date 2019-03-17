@@ -17,7 +17,7 @@ do
     then
         echo ok '#' cpanm $disturl
 
-        curl https://gugod.org/feed/cpan-install-notest-recent-SUCCESS/items -X POST -F id="$disturl" -F title="$distname" -F content_text=@${dist_locallib}.log
+        curl https://gugod.org/feed/cpan-install-notest-recent-SUCCESS/items -X POST -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     else
         fail=1
         echo not ok '#' cpanm $disturl
@@ -25,7 +25,7 @@ do
         cat $dist_locallib.log
         echo '#' __LOG_END__
 
-        curl https://gugod.org/feed/cpan-install-notest-recent-FAIL/items -X POST -F id="$disturl" -F title="$distname" content_text=@${dist_locallib}.log
+        curl https://gugod.org/feed/cpan-install-notest-recent-FAIL/items -X POST -F id="$disturl" -F title="$distname" content_text='<'${dist_locallib}.log
     fi
 done
 
