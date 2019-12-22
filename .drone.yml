@@ -8,31 +8,15 @@ steps:
       - clone
     commands:
       - bash cpanm-install-notest-recent.sh
+    environment:
+      FEEDRO_TOEKN_NOTEST_FAIL: $$FEEDRO_TOEKN_NOTEST_FAIL
+      FEEDRO_TOEKN_NOTEST_SUCCESS: $$FEEDRO_TOEKN_NOTEST_SUCCESS
   - name: cpanm with test
     image: perl:5.28.0
     depends_on:
       - clone
     commands:
       - bash cpanm-install-recent.sh
-
----
-kind: pipeline
-name: cpanm arm64
-
-platform:
-  os: linux
-  arch: arm64
-
-steps:
-  - name: cpanm notest
-    image: perl:5.28.0
-    depends_on:
-      - clone
-    commands:
-      - bash cpanm-install-notest-recent.sh
-  - name: cpanm with test
-    image: perl:5.28.0
-    depends_on:
-      - clone
-    commands:
-      - bash cpanm-install-recent.sh
+    environment:
+      FEEDRO_TOEKN_FAIL: $$FEEDRO_TOEKN_FAIL
+      FEEDRO_TOEKN_SUCCESS: $$FEEDRO_TOEKN_SUCCESS
