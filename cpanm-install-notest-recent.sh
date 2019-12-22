@@ -10,6 +10,8 @@ do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
 
+    echo "## $disturl"
+
     cpanm --notest -L $dist_locallib $disturl 2>&1 > $dist_locallib.log
     rc=$?
 
