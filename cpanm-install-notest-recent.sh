@@ -10,6 +10,7 @@ do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
 
+    echo
     echo "## $disturl"
 
     cpanm --notest -L $dist_locallib $disturl 2>&1 > $dist_locallib.log
@@ -19,7 +20,9 @@ do
     then
         echo ok '#' cpanm $disturl
 
+        echo '##' Sent to Feedro
         curl --silent https://gugod.org/feed/cpanm-installation-notest-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
+        echo
     else
         fail=1
         echo not ok '#' cpanm $disturl
@@ -27,7 +30,9 @@ do
         cat $dist_locallib.log
         echo '#' __LOG_END__
 
+        echo '##' Sent to Feedro
         curl --silent https://gugod.org/feed/cpanm-installation-notest-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
+        echo
     fi
 done
 
