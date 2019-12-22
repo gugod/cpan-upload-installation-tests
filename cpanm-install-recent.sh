@@ -16,12 +16,16 @@ do
     if [[ $rc -eq 0 ]]
     then
         echo ok '#' cpanm $disturl
+
+        curl --silent https://gugod.org/feed/cpan-installation-test-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     else
         fail=1
         echo not ok '#' cpanm $disturl
         echo '#' __LOG_BEGIN__
         cat $dist_locallib.log
         echo '#' __LOG_END__
+
+        curl --silent https://gugod.org/feed/cpan-installation-test-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     fi
 done
 
