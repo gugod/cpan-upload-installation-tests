@@ -25,7 +25,7 @@ do
         cat $dist_locallib.log
         echo '#' __LOG_END__
 
-        # curl --silent https://gugod.org/feed/cpan-installation-test-FAIL/items -X POST -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
+        curl --silent https://gugod.org/feed/cpanw-installation-notest-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOEKN_NOTEST_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     fi
 done
 
