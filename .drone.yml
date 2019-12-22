@@ -10,7 +10,7 @@ steps:
       FEEDRO_TOEKN_NOTEST_FAIL:
         from_secret: FEEDRO_TOEKN_NOTEST_FAIL
       FEEDRO_TOEKN_NOTEST_SUCCESS:
-        from_secret: FEEDRO_TOEKN_NOTEST_SUCCESS
+        from_secret: feedro_toekn_notest_success
     commands:
       - bash cpanm-install-notest-recent.sh
   - name: cpanm with test
