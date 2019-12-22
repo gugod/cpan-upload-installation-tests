@@ -4,10 +4,12 @@ name: cpanm
 steps:
   - name: cpanm notest
     image: perl:5.28.0
+    depends_on: clone
     commands:
       - bash cpanm-install-notest-recent.sh
   - name: cpanm with test
     image: perl:5.28.0
+    depends_on: clone
     commands:
       - bash cpanm-install-recent.sh
 
@@ -22,9 +24,11 @@ platform:
 steps:
   - name: cpanm notest
     image: perl:5.28.0
+    depends_on: clone
     commands:
       - bash cpanm-install-notest-recent.sh
   - name: cpanm with test
     image: perl:5.28.0
+    depends_on: clone
     commands:
       - bash cpanm-install-recent.sh
