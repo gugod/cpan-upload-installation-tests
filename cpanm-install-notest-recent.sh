@@ -17,7 +17,7 @@ do
     then
         echo ok '#' cpanm $disturl
 
-        # curl --silent https://gugod.org/feed/cpan-install-test--SUCCESS/items -X POST -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
+        curl --silent https://gugod.org/feed/cpanm-installation-notest-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
     else
         fail=1
         echo not ok '#' cpanm $disturl
