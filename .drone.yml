@@ -9,8 +9,10 @@ steps:
     commands:
       - bash cpanm-install-notest-recent.sh
     environment:
-      FEEDRO_TOEKN_NOTEST_FAIL: $$FEEDRO_TOEKN_NOTEST_FAIL
-      FEEDRO_TOEKN_NOTEST_SUCCESS: $$FEEDRO_TOEKN_NOTEST_SUCCESS
+      FEEDRO_TOEKN_NOTEST_FAIL:
+        from_secret: FEEDRO_TOEKN_NOTEST_FAIL
+      FEEDRO_TOEKN_NOTEST_SUCCESS:
+        from_secret: FEEDRO_TOEKN_NOTEST_SUCCESS
   - name: cpanm with test
     image: perl:5.28.0
     depends_on:
@@ -18,5 +20,7 @@ steps:
     commands:
       - bash cpanm-install-recent.sh
     environment:
-      FEEDRO_TOEKN_FAIL: $$FEEDRO_TOEKN_FAIL
-      FEEDRO_TOEKN_SUCCESS: $$FEEDRO_TOEKN_SUCCESS
+      FEEDRO_TOEKN_FAIL:
+        from_secret: FEEDRO_TOEKN_FAIL
+      FEEDRO_TOEKN_SUCCESS:
+        from_secret: FEEDRO_TOEKN_SUCCESS
