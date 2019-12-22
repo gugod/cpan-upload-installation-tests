@@ -3,24 +3,24 @@ name: cpanm
 
 steps:
   - name: cpanm notest
-    image: perl:5.28.0
+    image: perl:5.28
     depends_on:
       - clone
-    commands:
-      - bash cpanm-install-notest-recent.sh
     environment:
       FEEDRO_TOEKN_NOTEST_FAIL:
         from_secret: FEEDRO_TOEKN_NOTEST_FAIL
       FEEDRO_TOEKN_NOTEST_SUCCESS:
         from_secret: FEEDRO_TOEKN_NOTEST_SUCCESS
+    commands:
+      - bash cpanm-install-notest-recent.sh
   - name: cpanm with test
-    image: perl:5.28.0
+    image: perl:5.28
     depends_on:
       - clone
-    commands:
-      - bash cpanm-install-recent.sh
     environment:
       FEEDRO_TOEKN_FAIL:
         from_secret: FEEDRO_TOEKN_FAIL
       FEEDRO_TOEKN_SUCCESS:
         from_secret: FEEDRO_TOEKN_SUCCESS
+    commands:
+      - bash cpanm-install-recent.sh
