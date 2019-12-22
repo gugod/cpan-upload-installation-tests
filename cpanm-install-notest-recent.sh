@@ -17,7 +17,7 @@ do
     then
         echo ok '#' cpanm $disturl
 
-        curl https://gugod.org/feed/cpanm-installation-notest-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
+        curl --silent https://gugod.org/feed/cpanm-installation-notest-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
     else
         fail=1
         echo not ok '#' cpanm $disturl
@@ -25,7 +25,7 @@ do
         cat $dist_locallib.log
         echo '#' __LOG_END__
 
-        curl https://gugod.org/feed/cpanm-installation-notest-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
+        curl --silent https://gugod.org/feed/cpanm-installation-notest-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_NOTEST_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
     fi
 done
 
