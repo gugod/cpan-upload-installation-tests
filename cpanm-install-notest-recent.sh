@@ -1,11 +1,11 @@
 #!/bin/bash
 
-curl --silent https://www.cpan.org/modules/01modules.mtime.rss > /tmp/01modules.mtime.rss
+curl --silent https://cpan.metacpan.org/modules/01modules.mtime.rss > /tmp/01modules.mtime.rss
 rc=$?
 if [[ $rc -ne 0 ]]; then exit 1; fi
 
 fail=0
-for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -5)
+for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -5 | sed 's/www.cpan/cpan.metacpan/')
 do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
