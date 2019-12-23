@@ -7,10 +7,8 @@ steps:
     depends_on:
       - clone
     environment:
-      FEEDRO_TOKEN_NOTEST_FAIL:
-        from_secret: FEEDRO_TOKEN_NOTEST_FAIL
-      FEEDRO_TOKEN_NOTEST_SUCCESS:
-        from_secret: FEEDRO_TOKEN_NOTEST_SUCCESS
+      FEEDRO_TOKEN_CPANM_NOTEST:
+        from_secret: FEEDRO_TOKEN_CPANM_NOTEST
     commands:
       - bash cpanm-install-notest-recent.sh
   - name: cpanm with test
@@ -18,9 +16,7 @@ steps:
     depends_on:
       - clone
     environment:
-      FEEDRO_TOKEN_FAIL:
-        from_secret: FEEDRO_TOKEN_FAIL
-      FEEDRO_TOKEN_SUCCESS:
-        from_secret: FEEDRO_TOKEN_SUCCESS
+      FEEDRO_TOKEN_CPANM:
+        from_secret: FEEDRO_TOKEN_CPANM
     commands:
       - bash cpanm-install-recent.sh
