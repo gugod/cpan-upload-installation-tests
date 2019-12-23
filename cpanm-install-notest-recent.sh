@@ -13,7 +13,7 @@ do
     echo
     echo "## $disturl"
 
-    cpanm --notest -L $dist_locallib $disturl 1>$dist_locallib.log 2>&1
+    cpanm --notest --verbose -L $dist_locallib $disturl 1>$dist_locallib.log 2>&1
     rc=$?
 
     if [[ $rc -eq 0 ]]
