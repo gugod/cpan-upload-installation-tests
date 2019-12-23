@@ -21,7 +21,7 @@ do
         echo ok '#' cpanm $disturl
 
         echo '##' Sent to Feedro
-        curl --silent https://gugod.org/feed/cpan-installation-test-SUCCESS/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_SUCCESS}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
+        curl --silent https://gugod.org/feed/CPAN-installation-with-cpanm/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_CPANM}" -F id="$disturl" -F title="SUCCESS $distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
         echo
     else
         fail=1
@@ -31,7 +31,7 @@ do
         echo '#' __LOG_END__
 
         echo '##' Sent to Feedro
-        curl --silent https://gugod.org/feed/cpan-installation-test-FAIL/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_FAIL}" -F id="$disturl" -F title="$distname" -F content_text='<'${dist_locallib}.log
+        curl --silent https://gugod.org/feed/CPAN-installation-with-cpanm/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_CPANM}" -F id="$disturl" -F title="FAIL $distname" -F content_text='<'<(tail -100 ${dist_locallib}.log)
         echo
     fi
 done
