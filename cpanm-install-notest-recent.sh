@@ -5,7 +5,7 @@ rc=$?
 if [[ $rc -ne 0 ]]; then exit 1; fi
 
 fail=0
-for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -30 | sed 's/www.cpan/cpan.metacpan/')
+for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -10 | sed 's/www.cpan/cpan.metacpan/')
 do
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
