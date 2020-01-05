@@ -4,4 +4,4 @@ perl:
   - 5.28
 
 script:
-  - cpanm-install-notest-recent.sh
+  cpanm-install-notest-recent.sh
