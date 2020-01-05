@@ -3,5 +3,8 @@ language: perl
 perl:
   - 5.28
 
+before_install:
+  - echo SKIP
+
 script:
   cpanm-install-notest-recent.sh
