@@ -7,4 +7,4 @@ before_install:
   - echo SKIP
 
 script:
-  - ./cpanm-install-notest-recent.sh
+  -  bash ./cpanm-install-notest-recent.sh
