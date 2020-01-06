@@ -1,7 +1,12 @@
+dist: bionic
+
 language: perl
 
 perl:
   - 5.28
+
+git:
+  depth: 1
 
 script:
   -  bash ./cpanm-install-notest-recent.sh
