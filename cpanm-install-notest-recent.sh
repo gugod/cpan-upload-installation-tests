@@ -23,6 +23,10 @@ do
         echo '##' Sent to Feedro
         curl --silent https://gugod.org/feed/CPAN-installation-with-cpanm-notest/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_CPANM_NOTEST}" -F id="$disturl" -F title="SUCCESS $distname" -F content_text='<'<(tail -25 ${dist_locallib}.log)
         echo
+        echo '##' __LOG_BEGIN__
+        tail -25 ${dist_locallib}.log
+        echo '##' __LOG_END__
+
     else
         fail=1
         echo not ok '#' cpanm $disturl
