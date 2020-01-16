@@ -9,5 +9,6 @@ git:
   depth: 1
 
 script:
+  - curl --version
   - bash --version
   - bash ./cpanm-install-notest-recent.sh
