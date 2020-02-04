@@ -1,12 +1,13 @@
 #!/bin/bash
 
-curl --silent https://www.cpan.org/modules/01modules.mtime.rss > /tmp/01modules.mtime.rss
+curl --silent 'https://metacpan.org/feed/recent?f=' > /tmp/recent.rss
 rc=$?
 if [[ $rc -ne 0 ]]; then exit 1; fi
 
 fail=0
-for disturl in $(cat /tmp/01modules.mtime.rss | grep -o -E '(http://www.cpan.org/modules/by-authors/[^<]+)' | head -5)
+for url in $(cat /tmp/recent.rss | grep about= | grep metacpan | head -10 | cut -d '"' -f 2 | sed 's/metacpan.org/fastapi.metacpan.org\/v1/')
 do
+    disturl=$(curl --silent $url | grep download_url | cut -f 4 -d '"' )
     distname=$(basename $disturl)
     dist_locallib=$(echo $distname | sed -e 's/\.tar\.gz//')
 
