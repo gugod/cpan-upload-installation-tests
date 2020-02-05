@@ -11,7 +11,7 @@ pool:
 
 steps:
 - script: |
-    apt install cpanminus
+    sudo apt-get install cpanminus
   displayName: install cpanm
 
 - script: |
