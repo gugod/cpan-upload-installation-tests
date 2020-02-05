@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: perl:5.30
+    steps:
+      - checkout
+      - run: bash cpanm-install-notest-recent.sh
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
