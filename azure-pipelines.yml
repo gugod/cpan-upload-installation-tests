@@ -15,5 +15,6 @@ steps:
   displayName: install cpanm
 
 - script: |
+    export FEEDRO_TOKEN_CPANM_NOTEST
     bash ./cpanm-install-notest-recent.sh
   displayName: 'cpan-install (notest)'
