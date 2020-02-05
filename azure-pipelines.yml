@@ -10,8 +10,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    apt install cpanminus
+  displayName: install cpanm
 
 - script: |
     bash ./cpanm-install-notest-recent.sh
