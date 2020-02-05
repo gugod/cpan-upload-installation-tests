@@ -14,7 +14,9 @@ steps:
     sudo apt-get install cpanminus
   displayName: install cpanm
 
-- script: |
+- bash: |
     export FEEDRO_TOKEN_CPANM_NOTEST
     bash ./cpanm-install-notest-recent.sh
-  displayName: 'cpan-install (notest)'
+  env:
+    FEEDRO_TOKEN_CPANM_NOTEST: $(FEEDRO_TOKEN_CPANM_NOTEST)
+  displayName: 'Install recent modules with cpanm (notest)'
