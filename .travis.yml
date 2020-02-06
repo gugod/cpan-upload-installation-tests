@@ -3,7 +3,8 @@ dist: bionic
 language: perl
 
 perl:
-  - 5.28
+  - '5.30'
+  - '5.26-shrplib'
 
 git:
   depth: 1
@@ -12,6 +13,4 @@ env:
   - FEEDRO_AUTHOR_NAME=TravisCI
 
 script:
-  - curl --version
-  - bash --version
   - bash ./cpanm-install-notest-recent.sh
