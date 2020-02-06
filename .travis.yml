@@ -8,6 +8,9 @@ perl:
 git:
   depth: 1
 
+env:
+  - FEEDRO_AUTHOR_NAME=TravisCI
+
 script:
   - curl --version
   - bash --version
