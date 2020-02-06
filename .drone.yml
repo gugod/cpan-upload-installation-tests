@@ -16,6 +16,7 @@ steps:
     depends_on:
       - clone
     environment:
+      FEEDRO_AUTHOR_NAME: DroneCI
       FEEDRO_TOKEN_CPANM:
         from_secret: FEEDRO_TOKEN_CPANM
     commands:

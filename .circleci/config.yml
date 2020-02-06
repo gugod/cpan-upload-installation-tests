@@ -3,6 +3,8 @@ jobs:
   test:
     docker:
       - image: perl:5.30
+    environment:
+      FEEDRO_AUTHOR_NAME: CircleCI
     steps:
       - checkout
       - run: bash cpanm-install-notest-recent.sh

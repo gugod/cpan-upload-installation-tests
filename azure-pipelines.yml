@@ -15,8 +15,10 @@ steps:
   displayName: install cpanm
 
 - bash: |
+    export FEEDRO_AUTHOR_NAME
     export FEEDRO_TOKEN_CPANM_NOTEST
     bash ./cpanm-install-notest-recent.sh
   env:
+    FEEDRO_AUTHOR_NAME: Azure
     FEEDRO_TOKEN_CPANM_NOTEST: $(FEEDRO_TOKEN_CPANM_NOTEST)
   displayName: 'Install recent modules with cpanm (notest)'
