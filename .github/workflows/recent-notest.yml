@@ -15,4 +15,4 @@ jobs:
       - run: bash cpanm-install-notest-recent.sh
         env:
           FEEDRO_AUTHOR_NAME: GithubAction
-          FEEDRO_TOKEN_CPANM: ${{ secrets.FEEDRO_TOKEN_CPANM }}
+          FEEDRO_TOKEN_CPANM_NOTEST: ${{ secrets.FEEDRO_TOKEN_CPANM_NOTEST }}
