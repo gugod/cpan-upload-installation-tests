@@ -6,7 +6,7 @@ on:
     - cron: '0 10 * * *'
 
 jobs:
-  tweet:
+  run:
     container:
       image: perl:5.32
     runs-on: ubuntu-latest
