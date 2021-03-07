@@ -1,9 +1,9 @@
-name: Recent Notest
+name: 'Recent (Notest)'
 
 on:
   push:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '15 30 * * *'
 
 jobs:
   run:
