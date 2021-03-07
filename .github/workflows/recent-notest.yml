@@ -1,0 +1,16 @@
+name: Recent Notest
+
+on:
+  push:
+  schedule:
+    - cron: '0 10 * * *'
+
+jobs:
+  tweet:
+    container:
+      image: perl:5.32
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash ./cpanm-install-notest-recent.sh
+        env:
+          FEEDRO_AUTHOR_NAME: GithubAction
