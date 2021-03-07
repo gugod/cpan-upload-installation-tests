@@ -11,6 +11,7 @@ jobs:
       image: perl:5.32
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: bash cpanm-install-notest-recent.sh
         env:
           FEEDRO_AUTHOR_NAME: GithubAction
