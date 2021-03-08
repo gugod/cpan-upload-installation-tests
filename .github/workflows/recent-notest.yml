@@ -10,12 +10,12 @@ jobs:
     strategy:
       matrix:
         perl: [ "perl:5.32", "perl:5.30" ]
+    container:
+      image: ${{ matrix.perl }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: bash cpanm-install-notest-recent.sh
-        container:
-          image: ${{ matrix.perl }}
         env:
           FEEDRO_AUTHOR_NAME: GithubAction
           FEEDRO_TOKEN_CPANM_NOTEST: ${{ secrets.FEEDRO_TOKEN_CPANM_NOTEST }}
