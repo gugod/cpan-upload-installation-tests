@@ -4,7 +4,6 @@ curl --silent 'https://metacpan.org/feed/recent?f=' > /tmp/recent.rss
 rc=$?
 if [[ $rc -ne 0 ]]; then exit 1; fi
 
-fail=0
 for url in $(cat /tmp/recent.rss | grep about= | grep metacpan | head -10 | cut -d '"' -f 2 | sed 's/metacpan.org/fastapi.metacpan.org\/v1/')
 do
     disturl=$(curl --silent $url | grep download_url | cut -f 4 -d '"' )
@@ -25,7 +24,6 @@ do
         curl --silent https://gugod.org/feed/CPAN-installation-with-cpanm/items -X POST -H "Authentication: Bearer ${FEEDRO_TOKEN_CPANM}" -F id="$disturl" -F title="SUCCESS $distname" -F content_text='<'<(tail -25 ${dist_locallib}.log) -F "author.name=$FEEDRO_AUTHOR_NAME"
         echo
     else
-        fail=1
         echo not ok '#' cpanm $disturl
         echo '#' __LOG_BEGIN__
         tail -25 $dist_locallib.log
@@ -36,5 +34,3 @@ do
         echo
     fi
 done
-
-exit $fail
